@@ -66,7 +66,7 @@ def get_conversational_chain():
 
 def clear_chat_history():
     st.session_state.messages = [
-        {"role": "assistant", "content": "upload some pdfs and ask me a question"}]
+        {"role": "assistant", "content": "upload các tài liệu pdfs và đặt câu hỏi cho tôi"}]
 
 
 def user_input(user_question):
@@ -95,18 +95,18 @@ def main():
     with st.sidebar:
         st.title("Menu:")
         pdf_docs = st.file_uploader(
-            "Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True)
+            "Upload PDF Files và Click vào Submit Submit & Nút Process", accept_multiple_files=True)
         if st.button("Submit & Process"):
-            with st.spinner("Processing..."):
+            with st.spinner("Đang xử lý..."):
                 raw_text = get_pdf_text(pdf_docs)
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks)
                 st.success("Done")
 
     # Main content area for displaying chat messages
-    st.title("Chat with PDF files using Gemini🤖")
-    st.write("Welcome to the chat!")
-    st.sidebar.button('Clear Chat History', on_click=clear_chat_history)
+    st.title("Hỏi tất tần tật với file PDF bằng Gemini🤖")
+    st.write("Chào mừng đến CocoSystem Chatbot")
+    st.sidebar.button('Xóa lịch sử Chat', on_click=clear_chat_history)
 
     # Chat input
     # Placeholder for chat messages
